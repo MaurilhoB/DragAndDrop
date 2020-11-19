@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Drag And Drop</title>
+</head>
+<body>
+    <div class="main-container">
+        <div class="form-group">
+            <form enctype="multipart/form-data" method="post" class="form" action="">
+                <label class="text-upload" for="upload">Drag and Drop the files for upload</label>
+                <input name="files" id="upload" class="file-input" type="file" multiple>
+                <input id="submit" type="button" value="Upload Files">
+            </form>
+        </div>
+    </div>
+    <script>
+        let input = document.getElementById('upload');
+        let submitBtn = document.getElementById('submit');
+        input.addEventListener('input', ()=>{
+            if(input.files.length > 0){
+                submitBtn.value = 'Upload '+input.files.length+' Files';
+            }else{
+                submitBtn.value = 'Upload Files';
+            }
+        });
+        submitBtn.addEventListener('click', ()=>{
+            if(input.files.length <= 0){
+                alert('Please select at least one file.')
+            }else{
+                submitBtn.type = 'submit';
+                submitBtn.click();
+            }
+        })
+    </script>
+</body>
+</html>
